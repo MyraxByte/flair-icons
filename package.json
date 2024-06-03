@@ -1,0 +1,52 @@
+{
+  "name": "@flair-sdk/icons",
+  "version": "2.82.3",
+  "private": false,
+  "author": "flair.dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flair-sdk/typescript.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "clean": "rimraf ./dist && rimraf ./build",
+    "generate-barrels": "barrelsby -d ./build",
+    "svgr": "svgr --title-prop --icon --no-dimensions --typescript -d ./build/ assets",
+    "build": "npm run clean && npm run svgr && npm run generate-barrels && rollup -c"
+  },
+  "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.js",
+      "default": "./src/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "module": "dist/index.es.js",
+  "types": "dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@svgr/cli": "^6.2.1",
+    "@types/react": "^18.0.10",
+    "@types/react-dom": "^18.0.5"
+  }
+}
